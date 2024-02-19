@@ -1,0 +1,527 @@
+#DCP 10
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+i=2
+D1=1
+D2=1
+D3=1
+C1=1
+C2=1
+C3=1
+dd1=0
+dd2=0
+dd3=0
+cc1=0
+cc2=0
+cc3=0
+INV=0
+OUT=0
+PRF =0
+count =0
+NO10 =''
+PD1=1
+PC1=1
+SD1=1
+SC1=1
+d1p=0
+d2p=0
+d3p=0
+c1p=0
+c2p=0
+c3p=0
+d1s=0
+d2s=0
+d3s=0
+c1s=0
+c2s=0
+c3s=0
+prevd =''
+prevc =''
+scnd=''
+scnc=''
+def DC(n):
+  if n not in range(0,37 ) and n !=100:
+      print("OUT of range")
+  else:
+    global i
+    n1=1*i
+    n2=2*i
+    n3=3*i
+    n4=4*i
+    n5=6*i
+    n6=9*i
+    n7=13*i
+    n8=16*i
+    n9=21*i
+    n10=31*i
+    global D1
+    global D2
+    global D3
+    global C1
+    global C2
+    global C3
+    global dd1
+    global dd2
+    global dd3
+    global cc1
+    global cc2
+    global cc3
+    global INV
+    global OUT
+    global PRF
+    global count
+    global NO10
+    global PD1
+    global PC1
+    global SD1
+    global SC1
+    global d1p
+    global d2p
+    global d3p
+    global c1p
+    global c2p
+    global c3p
+    global d1s
+    global d2s
+    global d3s
+    global c1s
+    global c2s
+    global c3s
+    global prevd
+    global prevc
+    global scnd
+    global scnc
+    global scnd
+    INV +=dd1+dd2+dd3+cc1+cc2+cc3
+    rnd = lambda x : x if(x%1 > 0)  else int(x)
+    if n == 100 or (n ==0 and count ==0):
+      n =100
+      D1 =1
+      D2 =1
+      D3 =1
+      C1 =1
+      C2 =1
+      C3 =1
+      dd1=0
+      dd2=0
+      dd3=0
+      cc1=0
+      cc2=0
+      cc3=0
+      INV=0
+      OUT=0
+      count=0
+      PD1=1
+      PC1=1
+      SD1=1
+      SC1=1
+      d1p=0
+      d2p=0
+      d3p=0
+      c1p=0
+      c2p=0
+      c3p=0
+      d1s=0
+      d2s=0
+      d3s=0
+      c1s=0
+      c2s=0
+      c3s=0
+      prevd=''
+      prevc=''
+      scnd=''
+      scnc=''
+      #NO10 =''
+    elif n == 0:
+      D1 +=1
+      if D1>10:
+          NO10 +=', D1'
+          D1=1
+          INV -=50*i
+          PRF -=50*i
+      D2 +=1
+      if D2>10:
+          NO10 +=', D2'
+          D2=1
+          INV -=50*i
+          PRF -=50*i
+      D3 +=1
+      if D3>10:
+          NO10 +=', D3'
+          D3=1
+          INV -=50*i
+          PRF -=50*i
+      C1 +=1
+      if C1>10:
+          NO10 +=', C1'
+          C1=1
+          INV -=50*i
+          PRF -=50*i
+      C2 +=1
+      if C2>10:
+          NO10 +=', C2'
+          C2=1
+          INV -=50*i
+          PRF -=50*i
+      C3 +=1
+      if C3>10:
+          NO10 +=', C3'
+          C3=1
+          INV -=50*i
+          PRF -=50*i
+      PD1 +=1
+      if PD1 >10:
+          PD1=1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', PD1'
+      SD1 +=1
+      if SD1 >10:
+          SD1=1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', SD1'
+      PC1 +=1
+      if PC1 >10:
+          PC1=1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', PC1'
+      SC1 +=1
+      if SC1 >10:
+          SC1=1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', SC1'
+    else:
+      if n in range(1,13):
+        OUT += dd1*3
+        D1=1
+        D2 +=1
+        D3 +=1
+        if D2>10:
+          NO10 +=', D2'
+          D2=1
+          INV -=50*i
+          PRF -=50*i
+        if D3>10:
+          NO10 +=', D3'
+          D3=1
+          INV -=50*i
+          PRF -=50*i
+        d1p =1
+        d2p =0
+        d3p =0
+        if scnd == 'dp1':
+            SD1 =1
+        elif scnd !='' : SD1 +=1
+        if SD1 >10:
+            SD1 =1
+            INV -=50*i
+            PRF -=50*i
+            NO10 +=', SD1'
+        if prevd =='dp1' or count ==0:
+            PD1=1
+        else:
+            PD1 +=1
+            scnd = prevd
+            if prevd =='dp2':
+              d1s=0
+              d2s=1
+              d3s=0
+            if prevd =='dp3':
+              d1s=0
+              d2s=0
+              d3s=1
+        if PD1 >10:
+           PD1 =1
+           INV -=50*i
+           PRF -=50*i
+           NO10 +=', PD1'
+        prevd ='dp1'
+      elif n in range(13,25):
+        OUT += dd2*3
+        D2=1
+        D1 +=1
+        D3 +=1
+        if D1>10:
+          NO10 +=', D1'
+          D1=1
+          INV -=50*i
+          PRF -=50*i
+        if D3>10:
+          NO10 +=', D3'
+          D3=1
+          INV -=50*i
+          PRF -=50*i
+        d1p =0
+        d2p =1
+        d3p =0
+        if scnd == 'dp2':
+            SD1 =1
+        elif scnd !='' : SD1 +=1
+        if SD1 >10:
+           SD1 =1
+           INV -=50*i
+           PRF -=50*i
+           NO10 +=', SD1'
+        if prevd =='dp2' or count ==0:
+            PD1=1
+        else:
+            PD1 +=1
+            scnd = prevd
+            if prevd =='dp1':
+              d1s=1
+              d2s=0
+              d3s=0
+            if prevd =='dp3':
+              d1s=0
+              d2s=0
+              d3s=1
+        if PD1 >10:
+           PD1 =1
+           INV -=50*i
+           PRF -=50*i
+           NO10 +=', PD1'
+        prevd ='dp2'
+      elif n in range(25,37):
+        OUT += dd3*3
+        D3=1
+        D1 +=1
+        D2 +=1
+        if D2>10:
+          NO10 +=', D2'
+          D2=1
+          INV -=50*i
+          PRF -=50*i
+        if D1>10:
+          NO10 +=', D1'
+          D1=1
+          INV -=50*i
+          PRF -=50*i
+        d1p =0
+        d2p =0
+        d3p =1
+        if scnd == 'dp3':
+            SD1 =1
+        elif scnd !='' : SD1 +=1
+        if SD1 >10:
+           SD1 =1
+           INV -=50*i
+           PRF -=50*i
+           NO10 +=', SD1'
+        if prevd =='dp3' or count ==0:
+            PD1=1
+        else:
+            PD1 +=1
+            scnd = prevd
+            if prevd =='dp1':
+              d1s=1
+              d2s=0
+              d3s=0
+            if prevd =='dp2':
+              d1s=0
+              d2s=1
+              d3s=0
+        if PD1 >10:
+          PD1 =1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', PD1'
+        prevd ='dp3'
+      if n in (1,4,7,10,13,16,19,22,25,28,31,34):
+        OUT += cc1*3
+        C1=1
+        C2 +=1
+        C3 +=1
+        if C2>10:
+          NO10 +=', C2'
+          C2=1
+          INV -=50*i
+          PRF -=50*i
+        if C3>10:
+          NO10 +=', C3'
+          C3=1
+          INV -=50*i
+          PRF -=50*i
+        c1p =1
+        c2p =0
+        c3p =0
+        if scnc == 'dc1':
+            SC1 =1
+        elif scnc !='' : SC1 +=1
+        if SC1 >10:
+          SC1 =1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', SC1'
+        if prevc =='dc1' or count ==0:
+            PC1=1
+        else:
+            PC1 +=1
+            scnc =prevc
+            if prevc =='dc2':
+              c1s=0
+              c2s=1
+              c3s=0
+            if prevc =='dc3':
+              c1s=0
+              c2s=0
+              c3s=1
+        if PC1 >10:
+          PC1 =1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', PC1'
+        prevc ='dc1'
+      elif n in (2,5,8,11,14,17,20,23,26,29,32,35):
+        OUT += cc2*3
+        C2=1
+        C1 +=1
+        C3 +=1
+        if C1>10:
+          NO10 +=', C1'
+          C1=1
+          INV -=50*i
+          PRF -=50*i
+        if C3>10:
+          NO10 +=', C3'
+          C3=1
+          INV -=50*i
+          PRF -=50*i
+        c1p =0
+        c2p =1
+        c3p =0
+        if scnc == 'dc2':
+            SC1 =1
+        elif scnc !='' : SC1 +=1
+        if SC1 >10:
+          SC1 =1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', SC1'
+        if prevc =='dc2' or count ==0:
+            PC1=1
+        else:
+            PC1 +=1
+            scnc =prevc
+            if prevc =='dc1':
+              c1s=1
+              c2s=0
+              c3s=0
+            if prevc =='dc3':
+              c1s=0
+              c2s=0
+              c3s=1
+        if PC1 >10:
+          PC1 =1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', PC1'
+        prevc ='dc2'
+      elif n >0 and n % 3 ==0:
+        OUT += cc3*3
+        C3=1
+        C1 +=1
+        C2 +=1
+        if C2>10:
+          NO10 +=', C2'
+          C2=1
+          INV -=50*i
+          PRF -=50*i
+        if C1>10:
+          NO10 +=', C1'
+          C1=1
+          INV -=50*i
+          PRF -=50*i
+        c1p =0
+        c2p =0
+        c3p =1
+        if scnc == 'dc3':
+            SC1 =1
+        elif scnc !='' : SC1 +=1
+        if SC1 >10:
+          SC1 =1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', SC1'
+        if prevc =='dc3' or count ==0:
+            PC1=1
+        else:
+            PC1 +=1
+            scnc =prevc
+            if prevc =='dc1':
+              c1s=1
+              c2s=0
+              c3s=0
+            if prevc =='dc2':
+              c1s=0
+              c2s=1
+              c3s=0
+        if PC1 >10:
+          PC1 =1
+          INV -=50*i
+          PRF -=50*i
+          NO10 +=', PC1'
+        prevc ='dc3'
+    d1 =eval("n"+str((D1)))
+    d2 =eval("n"+str((D2)))
+    d3 =eval("n"+str((D3)))
+    c1 =eval("n"+str((C1)))
+    c2 =eval("n"+str((C2)))
+    c3 =eval("n"+str((C3)))
+    if count >=5:
+        d1 +=int(eval("n"+str((PD1)))*d1p + eval("n"+str((SD1)))*d1s)
+        d2 +=int(eval("n"+str((PD1)))*d2p + eval("n"+str((SD1)))*d2s)
+        d3 +=int(eval("n"+str((PD1)))*d3p + eval("n"+str((SD1)))*d3s)
+        c1 +=int(eval("n"+str((PC1)))*c1p + eval("n"+str((SC1)))*c1s)
+        c2 +=int(eval("n"+str((PC1)))*c2p + eval("n"+str((SC1)))*c2s)
+        c3 +=int(eval("n"+str((PC1)))*c3p + eval("n"+str((SC1)))*c3s)
+    dd1 =d1 -min(d1,d2,d3)
+    dd2 =d2 -min(d1,d2,d3)
+    dd3 =d3 -min(d1,d2,d3)
+    cc1 =c1 -min(c1,c2,c3)
+    cc2 =c2 -min(c1,c2,c3)
+    cc3 =c3 -min(c1,c2,c3)
+    if n==0 and count ==1:
+       dd1 =2*dd1
+       dd2 =2*dd2
+       dd3 =2*dd3
+       cc1 =2*cc1
+       cc2 =2*cc2
+       cc3 =2*cc3
+    res =''
+    if OUT-INV >=0 and count >0 :
+      PRF +=OUT-INV
+      DC(100)
+    elif OUT-INV < 0 or n!=100:
+        count +=1
+        if dd1>0: print("Done - "+color.BOLD +str(rnd(dd1))+color.END )
+        else:print("Done - ")
+        print()
+        if dd2>0:print("Dtwo - "+color.RED +str(rnd(dd2))+color.END )
+        else:print("Dtwo - ")
+        print()
+        if dd3>0:print("D3tre - "+color.BOLD +str(rnd(dd3))+color.END)
+        else:print("Dtre - ")
+        print()
+        res +="   Cone - "+color.RED +str(rnd(cc1))+color.END if cc1>0 else "   Cone - "
+        res +=" ,Ctwo - "+color.BOLD +str(rnd(cc2))+color.END if cc2>0 else " ,Ctwo - "
+        res +=" ,Ctre - "+color.RED +str(rnd(cc3))+color.END if cc3>0 else " ,Ctre - "
+        print(res)
+        print(color.RED +str(rnd(OUT-INV))+color.END)
+        if count >5:
+          print("count :",count)
+        if NO10 !='':
+          print("NO10 :",NO10)
+        if count >=12:
+          print("check and close:")
